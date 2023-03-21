@@ -48,7 +48,7 @@ public class ProductionManager : MonoBehaviour
             {
                 _isWorking = true;
             }
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(1f);
         }
     }
 }

@@ -29,6 +29,16 @@ public class CollectManager : MonoBehaviour
             0.5f - ((float)_detailList.Count / 20), _collectPoint.position.z);
             _detailList.Add(_temp);
 
+            if (TriggerManager.productionManager != null)
+            {
+                TriggerManager.productionManager.RemoveLast();
+            }
+
         }
+    }
+
+    private void GiveDetail()
+    {
+        
     }
 }

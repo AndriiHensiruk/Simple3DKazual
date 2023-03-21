@@ -6,8 +6,12 @@ public class TriggerManager : MonoBehaviour
 {
     public delegate void OnCollectArea();
     public static event OnCollectArea OnDetailCollect;
+    public static ProductionManager productionManager;
 
-    private bool isCollecting;
+    public delegate void OnFabricArea();
+    public static event OnFabricArea OnDetailGive;
+
+    private bool isCollecting, isGiving;
 
     private void Start() 
     {
@@ -22,6 +26,12 @@ public class TriggerManager : MonoBehaviour
             {
                 OnDetailCollect();
             }
+
+            if (isGiving == true)
+            {
+                OnDetailGive();
+            }
+
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -32,13 +42,25 @@ public class TriggerManager : MonoBehaviour
         if (other.gameObject.CompareTag("CollectArea"))
         {
             isCollecting = true;
+            productionManager = other.gameObject.GetComponent<ProductionManager>();
         }
+
+        if (other.gameObject.CompareTag("WorkArea"))
+        {
+            isGiving = true;
+        }
+        
     }
     private void OnTriggerExit(Collider other) 
     {
          if (other.gameObject.CompareTag("CollectArea"))
         {
             isCollecting = false;
+            productionManager = null;
+        }
+        if (other.gameObject.CompareTag("WorkArea"))
+        {
+            isGiving = false;
         }
     }
 }
