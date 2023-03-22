@@ -13,11 +13,13 @@ public class CollectManager : MonoBehaviour
     private void OnEnable()
     {
         TriggerManager.OnDetailCollect += GetDetail;
+        TriggerManager.OnDetailGive += GiveDetail;
     }
 
     private void OnDisable() 
     {
         TriggerManager.OnDetailCollect -= GetDetail;
+        TriggerManager.OnDetailGive -= GiveDetail;
     }
      
     private void GetDetail()
@@ -39,6 +41,19 @@ public class CollectManager : MonoBehaviour
 
     private void GiveDetail()
     {
-        
+        if (_detailList.Count > 0)
+        {
+            TriggerManager.workerManager.GetDetail();
+            RemoveLast();
+        }
+    }
+
+    public void RemoveLast()
+    {
+        if (_detailList.Count > 0)
+        {
+            Destroy(_detailList[_detailList.Count -1]);
+            _detailList.RemoveAt(_detailList.Count -1);
+        }
     }
 }

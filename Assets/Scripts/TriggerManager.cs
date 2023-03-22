@@ -11,6 +11,8 @@ public class TriggerManager : MonoBehaviour
     public delegate void OnFabricArea();
     public static event OnFabricArea OnDetailGive;
 
+    public static WorkerManager workerManager;
+
     private bool isCollecting, isGiving;
 
     private void Start() 
@@ -48,6 +50,7 @@ public class TriggerManager : MonoBehaviour
         if (other.gameObject.CompareTag("WorkArea"))
         {
             isGiving = true;
+            workerManager = other.gameObject.GetComponent<WorkerManager>();
         }
         
     }
@@ -61,6 +64,7 @@ public class TriggerManager : MonoBehaviour
         if (other.gameObject.CompareTag("WorkArea"))
         {
             isGiving = false;
+            workerManager = null;
         }
     }
 }
