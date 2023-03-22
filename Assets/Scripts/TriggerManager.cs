@@ -6,12 +6,12 @@ public class TriggerManager : MonoBehaviour
 {
     public delegate void OnCollectArea();
     public static event OnCollectArea OnDetailCollect;
-    public static ProductionManager productionManager;
+    public static Factory1Manager factory1Manager;
 
     public delegate void OnFabricArea();
     public static event OnFabricArea OnDetailGive;
 
-    public static WorkerManager workerManager;
+    public static Factory2Manager factory2Manager;
 
     private bool isCollecting, isGiving;
 
@@ -41,30 +41,30 @@ public class TriggerManager : MonoBehaviour
 
     private void OnTriggerStay(Collider other) 
     {
-        if (other.gameObject.CompareTag("CollectArea"))
+        if (other.gameObject.CompareTag("Factory1"))
         {
             isCollecting = true;
-            productionManager = other.gameObject.GetComponent<ProductionManager>();
+            factory1Manager = other.gameObject.GetComponent<Factory1Manager>();
         }
 
-        if (other.gameObject.CompareTag("WorkArea"))
+        if (other.gameObject.CompareTag("Factory2"))
         {
             isGiving = true;
-            workerManager = other.gameObject.GetComponent<WorkerManager>();
+            factory2Manager = other.gameObject.GetComponent<Factory2Manager>();
         }
         
     }
     private void OnTriggerExit(Collider other) 
     {
-         if (other.gameObject.CompareTag("CollectArea"))
+         if (other.gameObject.CompareTag("Factory1"))
         {
             isCollecting = false;
-            productionManager = null;
+            factory1Manager = null;
         }
-        if (other.gameObject.CompareTag("WorkArea"))
+        if (other.gameObject.CompareTag("Factory2"))
         {
             isGiving = false;
-            workerManager = null;
+            factory2Manager = null;
         }
     }
 }

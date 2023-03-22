@@ -31,9 +31,9 @@ public class CollectManager : MonoBehaviour
             0.5f - ((float)_detailList.Count / 20), _collectPoint.position.z);
             _detailList.Add(_temp);
 
-            if (TriggerManager.productionManager != null)
+            if (TriggerManager.factory1Manager != null)
             {
-                TriggerManager.productionManager.RemoveLast();
+                TriggerManager.factory1Manager.RemoveLast();
             }
 
         }
@@ -43,7 +43,7 @@ public class CollectManager : MonoBehaviour
     {
         if (_detailList.Count > 0)
         {
-            TriggerManager.workerManager.GetDetail();
+            TriggerManager.factory2Manager.GetDetail();
             RemoveLast();
         }
     }

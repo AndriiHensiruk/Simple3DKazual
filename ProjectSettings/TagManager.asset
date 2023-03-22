@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CollectArea
-  - WorkArea
+  - Factory1
+  - Factory2
+  - Factory3
   layers:
   - Default
   - TransparentFX

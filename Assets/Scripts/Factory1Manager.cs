@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProductionManager : MonoBehaviour
+public class Factory1Manager : MonoBehaviour
 {
     public List<GameObject> _detailList = new List<GameObject>();
     public GameObject _detailPrefab;
@@ -39,16 +39,20 @@ public class ProductionManager : MonoBehaviour
                     (_detailCount % _stackCount) / 20, _exitPoint.position.z);
                     _detailList.Add(_temp);
 
-                if (_detailList.Count >=30)
+                if (_detailList.Count >= 30 )
                 {
                     _isWorking = false;
+                    Debug.Log("Scklad FOOL!!!");
                 } 
+                
             }
-             else if (_detailList.Count < 50)
-            {
-                _isWorking = true;
-            }
-            yield return new WaitForSeconds(1f);
+            else if (_detailList.Count < 10)
+                    {
+                        _isWorking = true;
+                
+                    }
+             
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
