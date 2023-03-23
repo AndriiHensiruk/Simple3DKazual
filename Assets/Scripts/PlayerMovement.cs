@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody rb;
+    private Rigidbody rb;
     [SerializeField] float movementSpeed = 6f;
+    [SerializeField] private FixedJoystick _joystick;
  
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+        rb.velocity = new Vector3(_joystick.Horizontal * movementSpeed, rb.velocity.y, _joystick.Vertical * movementSpeed);
+        if (_joystick.Horizontal != 0 || _joystick.Vertical != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
+        }
 
         
     }
