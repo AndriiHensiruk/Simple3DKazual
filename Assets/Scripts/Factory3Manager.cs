@@ -4,32 +4,35 @@ using UnityEngine;
 
 public class Factory3Manager : MonoBehaviour
 {
-   public List<GameObject> _firstDetailList = new List<GameObject>();
-   public List<GameObject> _secondDetailList = new List<GameObject>();
+   public List<GameObject> _detailList = new List<GameObject>();
+    public List<GameObject> _nextDetailList = new List<GameObject>();
 
-   public Transform _firstDetialPoint, _secondDetailPoint;
-   public GameObject _firstDetailPrefab, _secondDetailPrefab;
+    public Transform _detialPoint, _nextDetailPoint;
+    public GameObject _detailPrefab, _nextDetailPrefab;
 
-    void Start()
+    private void Start()
     {
-        StartCoroutine(Work());
+        StartCoroutine(GenerateDetail());
     }
 
-    IEnumerator Work()
+    IEnumerator GenerateDetail()
     {
         while (true)
         {
-            if (_firstDetailList.Count > 0 && _secondDetailList.Count > 0) 
+            if (_detailList.Count > 0) 
             {
-                RemoveLast(_firstDetailList);
-                RemoveLast(_secondDetailList);
+                GameObject _temp = Instantiate(_nextDetailPrefab);
+                _temp.transform.position = new Vector3(
+                    _nextDetailPoint.position.x, ((float)_nextDetailList.Count / 10), _nextDetailPoint.position.z); 
+                _nextDetailList.Add(_temp);
+                RemoveLast();
             }
             yield return new WaitForSeconds(0.5f);
         }
        
     }
 
-    public void GetDetail(List<GameObject> _detailList, GameObject _detailPrefab,  Transform _detialPoint)
+    public void GetDetail()
     {
         GameObject _temp = Instantiate(_detailPrefab);
         _temp.transform.position = new Vector3(
@@ -37,7 +40,7 @@ public class Factory3Manager : MonoBehaviour
         _detailList.Add(_temp);
     }
 
-    public void RemoveLast(List<GameObject> _detailList)
+    public void RemoveLast()
     {
         if (_detailList.Count > 0)
         {

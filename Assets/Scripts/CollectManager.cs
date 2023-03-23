@@ -43,7 +43,10 @@ public class CollectManager : MonoBehaviour
     {
         if (_detailList.Count > 0)
         {
+            if (TriggerManager.factory2Manager != null)
             TriggerManager.factory2Manager.GetDetail();
+            if (TriggerManager.factory3Manager != null)
+            TriggerManager.factory3Manager.GetDetail();
             RemoveLast();
         }
     }

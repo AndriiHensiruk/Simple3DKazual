@@ -177,7 +177,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514318985}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.56}
+  m_LocalPosition: {x: 0, y: -0.1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1227777499}
@@ -643,11 +643,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227777495}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.7483606, y: 1, z: 1.7847984}
+  m_Center: {x: 0.37418032, y: 0, z: 0.3923992}
 --- !u!23 &1227777497
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -725,12 +725,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed4c3a7473699634789d17f1ca7339b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstDetailList: []
-  _secondDetailList: []
-  _firstDetialPoint: {fileID: 1471383431}
-  _secondDetailPoint: {fileID: 514318986}
-  _firstDetailPrefab: {fileID: 2713697160823286409, guid: e388465e65d9e884a89d74adcde6c3dc, type: 3}
-  _secondDetailPrefab: {fileID: 2713697160823286409, guid: 806565c42b57e3c499b827654e504f5d, type: 3}
+  _detailList: []
+  _nextDetailList: []
+  _detialPoint: {fileID: 1471383431}
+  _nextDetailPoint: {fileID: 514318986}
+  _detailPrefab: {fileID: 2713697160823286409, guid: e388465e65d9e884a89d74adcde6c3dc, type: 3}
+  _nextDetailPrefab: {fileID: 2713697160823286409, guid: 806565c42b57e3c499b827654e504f5d, type: 3}
 --- !u!1 &1471383430
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,7 +755,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471383430}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.6, y: 0, z: 0}
+  m_LocalPosition: {x: 2.4, y: 0.02, z: 2.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1227777499}

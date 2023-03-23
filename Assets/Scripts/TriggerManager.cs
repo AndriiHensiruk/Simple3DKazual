@@ -10,8 +10,10 @@ public class TriggerManager : MonoBehaviour
 
     public delegate void OnFabricArea();
     public static event OnFabricArea OnDetailGive;
-
     public static Factory2Manager factory2Manager;
+
+    public delegate void OnFinishArea();
+    public static Factory3Manager factory3Manager;
 
     private bool isCollecting, isGiving;
 
@@ -52,6 +54,12 @@ public class TriggerManager : MonoBehaviour
             isGiving = true;
             factory2Manager = other.gameObject.GetComponent<Factory2Manager>();
         }
+
+         if (other.gameObject.CompareTag("Factory3"))
+        {
+            isGiving = true;
+            factory3Manager = other.gameObject.GetComponent<Factory3Manager>();
+        }
         
     }
     private void OnTriggerExit(Collider other) 
@@ -65,6 +73,11 @@ public class TriggerManager : MonoBehaviour
         {
             isGiving = false;
             factory2Manager = null;
+        }
+        if (other.gameObject.CompareTag("Factory3"))
+        {
+            isGiving = false;
+            factory3Manager = null;
         }
     }
 }
