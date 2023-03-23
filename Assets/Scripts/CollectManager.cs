@@ -5,8 +5,10 @@ using UnityEngine;
 public class CollectManager : MonoBehaviour
 {
     public List<GameObject> _detailList = new List<GameObject>();
-    public GameObject _detailPrefab;
+    public List<GameObject> _nextDetailList = new List<GameObject>();
+
     public Transform _collectPoint;
+    public GameObject _detailPrefab, _nextDetailPrefab;
 
     private int _detailLimit = 10;
 
@@ -35,28 +37,43 @@ public class CollectManager : MonoBehaviour
             {
                 TriggerManager.factory1Manager.RemoveLast();
             }
-
         }
+        
     }
 
+   
     private void GiveDetail()
     {
         if (_detailList.Count > 0)
         {
             if (TriggerManager.factory2Manager != null)
-            TriggerManager.factory2Manager.GetDetail();
+            {
+                TriggerManager.factory2Manager.GetDetail();
+                RemoveLast(_detailList);
+            }
             if (TriggerManager.factory3Manager != null)
-            TriggerManager.factory3Manager.GetDetail();
-            RemoveLast();
+            {
+                TriggerManager.factory3Manager.GetDetail();
+                RemoveLast(_detailList);
+            } 
+           
+        }
+        if (_nextDetailList.Count > 0 )
+        {
+            if (TriggerManager.factory3Manager != null)
+            {
+                TriggerManager.factory3Manager.GetNextDetail();
+                RemoveLast(_nextDetailList);
+            } 
         }
     }
 
-    public void RemoveLast()
+    public void RemoveLast(List<GameObject> _detail)
     {
-        if (_detailList.Count > 0)
+        if (_detail.Count > 0)
         {
-            Destroy(_detailList[_detailList.Count -1]);
-            _detailList.RemoveAt(_detailList.Count -1);
+            Destroy(_detail[_detail.Count -1]);
+            _detailList.RemoveAt(_detail.Count -1);
         }
     }
 }

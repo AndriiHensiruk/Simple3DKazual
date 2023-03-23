@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Factory1Manager : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class Factory1Manager : MonoBehaviour
     public Transform _exitPoint;
     private bool _isWorking;
     private int _stackCount = 10;
-
+    public TMP_Text _infoText;
    
     void Start()
     {
@@ -33,6 +34,7 @@ public class Factory1Manager : MonoBehaviour
             int _rowCount = (int)_detailCount / _stackCount;
             if (_isWorking == true) 
             {
+                _infoText.text = "WORK!!!";
                 GameObject _temp = Instantiate(_detailPrefab);
                 _temp.transform.position = new Vector3
                     (_exitPoint.position.x + ((float)_rowCount / 3), 
@@ -42,7 +44,8 @@ public class Factory1Manager : MonoBehaviour
                 if (_detailList.Count >= 30 )
                 {
                     _isWorking = false;
-                    Debug.Log("Scklad FOOL!!!");
+                    Debug.Log("Scklad1 FOOL!!!");
+                    _infoText.text = "FOOL!!!";
                 } 
                 
             }
